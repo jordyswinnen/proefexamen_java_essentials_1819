@@ -1,4 +1,4 @@
-package be.pxl.opgave;
+package be.pxl.opgave.domain;
 
 import java.time.LocalDateTime;
 

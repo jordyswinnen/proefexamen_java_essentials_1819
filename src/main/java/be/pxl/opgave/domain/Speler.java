@@ -1,11 +1,11 @@
-package be.pxl.opgave;
+package be.pxl.opgave.domain;
 
 public class Speler extends Persoon {
 
 	private Sport sport;
 
 	public Speler(String id, String naam, Sport sport) {
-		super(id, naam); // Persoon constructor
+		super(id, naam);
 
 		this.sport = sport;
 	}

@@ -1,5 +1,9 @@
 package be.pxl.opgave;
 
+import be.pxl.opgave.domain.Scheidsrechter;
+import be.pxl.opgave.domain.Speler;
+import be.pxl.opgave.domain.Sport;
+
 public class PersoonApp {
 
 	public static void main(String[] args) {

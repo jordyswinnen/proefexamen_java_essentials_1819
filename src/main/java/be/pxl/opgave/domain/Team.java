@@ -1,4 +1,4 @@
-package be.pxl.opgave;
+package be.pxl.opgave.domain;
 
 public class Team {
 
@@ -40,13 +40,12 @@ public class Team {
 	}
 
 	public boolean spelerIdKomtVoor(String spelerId) {
-		Speler speler = new Speler(spelerId);
-
 		for (Speler spelerInTeam : spelers) {
-			if (speler.equals(spelerInTeam)) {
+			if (new Speler(spelerId).equals(spelerInTeam)) {
 				return true;
 			}
 		}
+
 		return false;
 	}
 
@@ -58,7 +57,9 @@ public class Team {
 			StringBuilder spelersStringBuilder = new StringBuilder();
 
 			for (Speler speler : spelers) {
-				spelersStringBuilder.append(speler.toString() + "\n");
+				spelersStringBuilder
+						.append(speler.toString())
+						.append("\n");
 			}
 
 			return spelersStringBuilder.toString();

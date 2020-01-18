@@ -1,13 +1,13 @@
-package be.pxl.opgave;
+package be.pxl.opgave.domain;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
+
+import static java.time.temporal.ChronoUnit.MINUTES;
 
 public class Wedstrijd implements DatumVergelijkbaar {
 
 	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/YY HH:mm");
-	;
 
 	private LocalDateTime wedstrijdDatum;
 	private Team team1;
@@ -25,18 +25,14 @@ public class Wedstrijd implements DatumVergelijkbaar {
 
 	public boolean spelerIdKomtVoor(String spelerId) {
 		if (team1 != null) {
-			if (!team1.spelerIdKomtVoor(spelerId)) {
-				if (team2 != null) {
-					return team1.spelerIdKomtVoor(spelerId);
-				} else {
-					return true;
-				}
-			}
+			return team1.spelerIdKomtVoor(spelerId);
 		} else {
-			return true;
+			if (team2 != null) {
+				return team2.spelerIdKomtVoor(spelerId);
+			} else {
+				return false;
+			}
 		}
-
-		return false;
 	}
 
 	public void setScore(int scoreTeam1, int scoreTeam2) {
@@ -50,17 +46,18 @@ public class Wedstrijd implements DatumVergelijkbaar {
 
 	@Override
 	public long berekenAantalMinutenNa(LocalDateTime datum) {
-		return wedstrijdDatum.until(datum, ChronoUnit.MINUTES);
+		return wedstrijdDatum.until(datum, MINUTES);
 	}
 
 	@Override
 	public String toString() {
 		return "TEAM 1" + "\n"
-				+ team1.toString()
+				+ team1
 				+ "TEAM 2" + "\n"
-				+ team2.toString()
+				+ team2
 				+ wedstrijdDatum.format(FORMATTER) + "\n"
-				+ "SCHEIDSRECHTER " + scheidrechter.toString() + "\n"
+				+ "SCHEIDSRECHTER " + scheidrechter + "\n"
 				+ "SCORE " + scoreTeam1 + " " + scoreTeam2;
+		// Not sure how to determine if a game has started or not..
 	}
 }

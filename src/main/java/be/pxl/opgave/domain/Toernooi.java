@@ -1,4 +1,4 @@
-package be.pxl.opgave;
+package be.pxl.opgave.domain;
 
 import java.time.LocalDateTime;
 
@@ -21,7 +21,7 @@ public class Toernooi {
 			return;
 		}
 
-		System.err.println("Geen ruimte meer voor wedstrijden’");
+		System.out.println("Geen ruimte meer voor wedstrijden’");
 	}
 
 	private int vindVrijePositie() {
@@ -35,11 +35,14 @@ public class Toernooi {
 	}
 
 	public LocalDateTime zoekDatumVolgendeWedstrijdVan(String spelerId) {
-		for (int i = 0, wedstrijdenLength = wedstrijden.length; i < wedstrijdenLength; i++) {
-			if (wedstrijden[i] != null && wedstrijden[i].spelerIdKomtVoor(spelerId)) {
-				return wedstrijden[i].getWedstrijdDatum();
+		// This might be an error in the exam. Logic to get the first possible date (next upcoming game) should be inverted i think?
+		LocalDateTime minDate = LocalDateTime.MIN;
+
+		for (Wedstrijd wedstrijd : wedstrijden) {
+			if (wedstrijd != null && wedstrijd.spelerIdKomtVoor(spelerId) && minDate.isBefore(wedstrijd.getWedstrijdDatum())) {
+				minDate = wedstrijd.getWedstrijdDatum();
 			}
 		}
-		return null;
+		return minDate == LocalDateTime.MIN ? null : minDate;
 	}
 }

@@ -1,4 +1,4 @@
-package be.pxl.opgave;
+package be.pxl.opgave.domain;
 
 import java.util.Objects;
 
@@ -8,7 +8,7 @@ public class Persoon {
 	private String naam;
 
 	protected Persoon(String id, String naam) {
-		// Protected constructor only allows construction of subclasses
+		// Protected constructor only allows construction of subclasses and package
 
 		this.id = parseId(id);
 		this.naam = naam;

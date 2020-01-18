@@ -1,5 +1,6 @@
-package be.pxl.opgave;
+package be.pxl.opgave.domain;
 
+import be.pxl.opgave.domain.Wedstrijd;
 import org.junit.Before;
 import org.junit.Test;
 

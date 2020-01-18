@@ -1,5 +1,12 @@
 package be.pxl.opgave;
 
+import be.pxl.opgave.domain.Scheidsrechter;
+import be.pxl.opgave.domain.Speler;
+import be.pxl.opgave.domain.Sport;
+import be.pxl.opgave.domain.Team;
+import be.pxl.opgave.domain.Toernooi;
+import be.pxl.opgave.domain.Wedstrijd;
+
 public class ToernooiApp {
 
 	public static void main(String[] args) {

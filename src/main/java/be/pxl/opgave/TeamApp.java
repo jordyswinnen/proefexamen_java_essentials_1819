@@ -1,5 +1,9 @@
 package be.pxl.opgave;
 
+import be.pxl.opgave.domain.Speler;
+import be.pxl.opgave.domain.Sport;
+import be.pxl.opgave.domain.Team;
+
 public class TeamApp {
 
 	public static void main(String[] args) {
